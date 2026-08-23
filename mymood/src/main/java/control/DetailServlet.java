@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import model.Moperation;
 import model.Product;
 import model.Store;
 
@@ -21,12 +22,9 @@ public class DetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		Store store = (Store) session.getAttribute("store");
 
-		if (store == null) {
-			response.sendRedirect("login.jsp");
-			return;
-		}
+		Moperation mope = new Moperation();
+		Store store = mope.ensureStore(session);
 
 		String id = request.getParameter("id");
 		Product prod = store.findById(id);

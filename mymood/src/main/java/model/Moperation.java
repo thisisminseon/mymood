@@ -23,6 +23,16 @@ public class Moperation {
 		return true;
 	}
 
+	// 未ログインでも閲覧できるよう、なければ Store を作る
+	public Store ensureStore(HttpSession session) {
+		Store store = (Store) session.getAttribute("store");
+		if (store == null) {
+			store = makeStore();
+			session.setAttribute("store", store);
+		}
+		return store;
+	}
+
 	private Store makeStore() {
 		ProductDao dao = new ProductDao();
 		List<Product> list = dao.selectAll();

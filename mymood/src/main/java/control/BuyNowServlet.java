@@ -20,6 +20,11 @@ public class BuyNowServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
+		if (request.getSession().getAttribute("loginUser") == null) {
+			response.sendRedirect("login.jsp");
+			return;
+		}
+
 		String prodId = request.getParameter("prodId");
 
 		Moperation mope = new Moperation();

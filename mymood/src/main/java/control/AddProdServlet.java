@@ -20,6 +20,11 @@ public class AddProdServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
+		if (request.getSession().getAttribute("loginUser") == null) {
+			response.sendRedirect("login.jsp");
+			return;
+		}
+
 		String prodId = request.getParameter("prodId");
 		String category = request.getParameter("category");
 
