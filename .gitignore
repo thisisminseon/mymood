@@ -13,8 +13,3 @@ Servers/
 
 # macOS
 .DS_Store
-
-# 内部作業メモ・学習資料（公開しない）
-docs/PROGRESS.md
-docs/mymood-plan.png
-docs/store-vs-cart.pdf
