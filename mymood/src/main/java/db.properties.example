@@ -1,0 +1,5 @@
+# db.properties のサンプル
+# このファイルを db.properties にコピーし、環境に合わせて値を設定する。
+db.url=jdbc:mysql://localhost:3306/mymood?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo
+db.user=root
+db.password=
