@@ -102,7 +102,16 @@ INSERT INTO m_user (userid, password, nickname, status, is_admin, created_at) VA
 ('sato','pass1234','さとう','withdrawn',0,'2026-08-19 18:40:00'),
 ('suzuki','pass1234','すずき','suspended',0,'2026-08-21 09:15:00'),
 ('tanaka','pass1234','たなか','active',0,'2026-08-20 14:30:00'),
-('yamada','1234','ヤマダ','active',0,'2026-08-23 11:33:31');
+('yamada','1234','ヤマダ','active',0,'2026-08-23 11:33:31'),
+('nameko_769','pass1234','なめ','active',0,'2026-08-18 13:20:00'),
+('vvamnyllk3','pass1234','あまと','active',0,'2026-08-18 19:05:00'),
+('2yqn_1','pass1234','はやて','active',0,'2026-08-19 10:42:00'),
+('ogi_hana__','pass1234','はな','active',0,'2026-08-19 21:15:00'),
+('nagata__shiori','pass1234','詩央里','active',0,'2026-08-20 09:30:00'),
+('tomita_nanaka','pass1234','ナナ','active',0,'2026-08-20 18:55:00'),
+('sakurai_momo_','pass1234','もも','active',0,'2026-08-21 12:08:00'),
+('kohahere','pass1234','コハル','active',0,'2026-08-22 16:40:00'),
+('ylil.yuri.lily','pass1234','ゆり','active',0,'2026-08-23 11:12:00');
 
 INSERT INTO t_review (product_id, userid, rating, comment, created_at) VALUES
 ('P001','suzuki',3,'暖かいですが、少し重いのが気になりました。','2026-08-22 16:55:00'),
