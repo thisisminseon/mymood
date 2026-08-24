@@ -5,7 +5,11 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 COPY mymood/src/main/webapp /usr/local/tomcat/webapps/ROOT
 COPY mymood/src/main/java   /tmp/src
 
-RUN javac -encoding UTF-8 \
+# db.properties はリポジトリに含めないため、サンプルから作る
+RUN if [ ! -f /tmp/src/db.properties ]; then \
+      cp /tmp/src/db.properties.example /tmp/src/db.properties; \
+    fi \
+ && javac -encoding UTF-8 \
       -cp "/usr/local/tomcat/lib/*:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*" \
       -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes \
       $(find /tmp/src -name "*.java") \
