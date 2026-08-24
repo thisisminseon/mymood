@@ -3,6 +3,8 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -42,8 +44,7 @@ public class OrderDao {
 	public List<Order> selectByUser(String userid) {
 		List<Order> list = new ArrayList<>();
 
-		String sql = "SELECT o.order_no, p.name, p.image_file, o.price, "
-				+ "DATE_FORMAT(o.ordered_at, '%Y-%m-%d %H:%i') AS ordered_at "
+		String sql = "SELECT o.order_no, p.name, p.image_file, o.price, o.ordered_at "
 				+ "FROM t_order o JOIN m_product p ON o.product_id = p.id "
 				+ "WHERE o.userid = ? AND o.hidden = 0 "
 				+ "ORDER BY o.ordered_at DESC, o.order_id";
@@ -60,7 +61,7 @@ public class OrderDao {
 							rs.getString("name"),
 							rs.getString("image_file"),
 							rs.getInt("price"),
-							rs.getString("ordered_at")));
+							format(rs.getTimestamp("ordered_at"))));
 				}
 			}
 
@@ -69,6 +70,14 @@ public class OrderDao {
 		}
 
 		return list;
+	}
+
+	// DBに依存しないよう、日付の整形はJava側で行う
+	private String format(Timestamp ts) {
+		if (ts == null) {
+			return "";
+		}
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(ts);
 	}
 
 	public boolean hideOrder(String orderNo, String userid) {

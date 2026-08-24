@@ -1,6 +1,9 @@
 # DB接続情報（環境ごとに異なるためコミットしない）
 mymood/src/main/java/db.properties
 
+# バックアップ
+*.bak
+
 # コンパイル成果物
 mymood/build/
 *.class

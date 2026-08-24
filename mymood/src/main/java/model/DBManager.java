@@ -3,6 +3,7 @@ package model;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DBManager {
@@ -23,7 +24,16 @@ public class DBManager {
 			user = prop.getProperty("db.user");
 			password = prop.getProperty("db.password");
 
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName(prop.getProperty("db.driver"));
+
+			// 起動時に一度だけ初期化スクリプトを流す
+			String init = prop.getProperty("db.init");
+			if (init != null && !init.trim().isEmpty()) {
+				try (Connection conn = getConnection();
+						Statement stmt = conn.createStatement()) {
+					stmt.execute(init);
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
