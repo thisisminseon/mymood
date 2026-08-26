@@ -64,7 +64,7 @@
 		<div class="cart-actions">
 			<a href="select-servlet" class="btn-sub">買い物を続ける</a>
 			<form action="pay-servlet" method="post">
-				<button type="submit" class="btn-main">精算する</button>
+				<button type="submit" class="btn-main">注文を確定する</button>
 			</form>
 		</div>
 	<%

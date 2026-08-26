@@ -23,7 +23,7 @@
 
 <div class="container">
 
-	<h2>精算完了</h2>
+	<h2>ご注文完了</h2>
 	<p class="thanks">ご購入ありがとうございました。</p>
 
 	<%
